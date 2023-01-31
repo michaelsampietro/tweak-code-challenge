@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './style.module.css';
 
 type ImageUploadProps = {
-  setImage: (image: string) => void;
+  setImage: (image: HTMLImageElement) => void;
 }
 
 const ImageUpload: React.FC<ImageUploadProps> = ({ setImage }) => {
@@ -11,8 +11,10 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ setImage }) => {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        const image = e.target?.result;
-        setImage(image as string);
+        const img = new Image();
+        img.src = e.target?.result as string;
+        img.setAttribute('name', file.name);
+        setImage(img);
       }
       reader.readAsDataURL(file);
     }

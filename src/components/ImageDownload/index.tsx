@@ -2,10 +2,11 @@ import React from 'react';
 import Title from '../Title';
 
 type ImageDownloadProps = {
-  canvas?: fabric.Canvas;
+  canvas?: fabric.StaticCanvas;
+  fileName?: string | null | undefined;
 }
 
-const ImageDownload: React.FC<ImageDownloadProps> = ({ canvas }) => {
+const ImageDownload: React.FC<ImageDownloadProps> = ({ canvas, fileName }) => {
 
   const downloadImage = (format: 'PNG' | 'JPEG') => {
     if (canvas) {
@@ -17,7 +18,7 @@ const ImageDownload: React.FC<ImageDownloadProps> = ({ canvas }) => {
       const link = document.createElement('a');
       link.hidden = true;
       link.href = dataURL;
-      link.download = `image.${format.toLowerCase()}`;
+      link.download = fileName || '';
       link.click();
     }
   };

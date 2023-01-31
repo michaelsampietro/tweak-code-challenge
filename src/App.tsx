@@ -8,25 +8,22 @@ import ImageDownload from './components/ImageDownload';
 
 function App() {
   // This state will be shared between the ImageUpload and ImageEditor components.
-  const [base64Image, setBase64Image] = useState<string>();
-  const [canvas, setCanvas] = React.useState<fabric.Canvas>();
+  const [baseImage, setBaseImage] = useState<HTMLImageElement>();
+  const [canvas, setCanvas] = React.useState<fabric.StaticCanvas>();
 
   return (
     <div>
-      {/* Image Uploader */}
       <Title title='Upload Image' />
-      <ImageUpload setImage={setBase64Image} />
+      <ImageUpload setImage={setBaseImage} />
 
-      {/* Image Editor */}
-      {base64Image && (
+      {baseImage && (
         <>
           <Title title='Edit Image' />
-          <ImageEditor image={base64Image} setCanvas={setCanvas} canvas={canvas} />
+          <ImageEditor image={baseImage} setCanvas={setCanvas} canvas={canvas} />
+          <ImageDownload canvas={canvas} fileName={baseImage?.getAttribute('name')} />
         </>
       )}
 
-      {/* Image Downloader */}
-      <ImageDownload canvas={canvas} />
     </div>
   );
 }
