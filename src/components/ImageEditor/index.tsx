@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fabric } from 'fabric';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
+import Title from '../Title';
 
 type ImageEditorProps = {
   image: HTMLImageElement;
@@ -73,6 +74,8 @@ const ImageEditor: React.FC<ImageEditorProps> = ({ image: rawImage, canvas, setC
 
   return (
     <>
+      <Title title='Edit Image' />
+
       <button onClick={() => addFilter([
         new fabric.Image.filters.Noise({
           noise: 60,

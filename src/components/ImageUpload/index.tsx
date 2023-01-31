@@ -1,4 +1,5 @@
 import React from 'react';
+import Title from '../Title';
 import styles from './style.module.css';
 
 type ImageUploadProps = {
@@ -21,16 +22,18 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ setImage }) => {
   }
 
   return (
-    <div className='inputWrapper'>
-      <input
-        type="file"
-        name="imageInput"
-        id="imageInput"
-        onChange={onFileUpload}
-        className={styles.input}
-        accept="image/*" // Only image types accepted
-      />
-    </div>
+    <>
+      <Title title='Upload Image' /><div className='inputWrapper'>
+        <input
+          type="file"
+          name="imageInput"
+          id="imageInput"
+          onChange={onFileUpload}
+          className={styles.input}
+          accept="image/*" // Only image types accepted
+        />
+      </div>
+    </>
   )
 }
 
