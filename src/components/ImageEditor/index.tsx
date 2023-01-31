@@ -3,11 +3,13 @@ import { fabric } from 'fabric';
 
 type ImageEditorProps = {
   image: string;
+  setCanvas?: React.Dispatch<React.SetStateAction<fabric.Canvas | undefined>>;
+  canvas?: fabric.Canvas;
 }
 
-const ImageEditor: React.FC<ImageEditorProps> = ({ image: rawImage }) => {
+const ImageEditor: React.FC<ImageEditorProps> = ({ image: rawImage, canvas, setCanvas }) => {
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
-  const [canvas, setCanvas] = React.useState<fabric.Canvas>();
+  // const [canvas, setCanvas] = React.useState<fabric.Canvas>();
   const [canvasImage, setCanvasImage] = useState<fabric.Image>()
 
   useEffect(() => {
@@ -16,7 +18,7 @@ const ImageEditor: React.FC<ImageEditorProps> = ({ image: rawImage }) => {
         width: 500,
         height: 500,
       });
-      setCanvas(canvas);
+      setCanvas?.(canvas);
     }
   }, []);
 
