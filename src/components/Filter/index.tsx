@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './style.module.css';
 
-type FilterProps = {
+export type FilterProps = {
   label: string;
   fieldName: string;
   applyFilter: (e: React.ChangeEvent<HTMLInputElement>, filterName: string) => void;
