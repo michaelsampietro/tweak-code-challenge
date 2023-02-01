@@ -28,6 +28,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ setImage }) => {
         <input
           type="file"
           name="imageInput"
+          data-testid="imageInput"
           id="imageInput"
           onChange={onFileUpload}
           className={styles.input}

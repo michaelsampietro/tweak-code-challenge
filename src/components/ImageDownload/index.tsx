@@ -51,8 +51,6 @@ const ImageDownload: React.FC<ImageDownloadProps> = ({ canvas, fileName }) => {
       <div className='center-div'>
         <Button text='PNG' onClick={() => downloadImage('PNG')} />
         <Button text='JPEG' onClick={() => downloadImage('JPEG')} />
-        {/* <button onClick={() => downloadImage('PNG')}>PNG</button>
-        <button onClick={() => downloadImage('JPEG')}>JPEG</button> */}
       </div>
     </>
   )
