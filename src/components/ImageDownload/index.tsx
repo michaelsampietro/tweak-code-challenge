@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../Button';
 import Title from '../Title';
 
 type ImageDownloadProps = {
@@ -47,8 +48,12 @@ const ImageDownload: React.FC<ImageDownloadProps> = ({ canvas, fileName }) => {
   return (
     <>
       <Title title='Download as' />
-      <button onClick={() => downloadImage('PNG')}>PNG</button>
-      <button onClick={() => downloadImage('JPEG')}>JPEG</button>
+      <div className='center-div'>
+        <Button text='PNG' onClick={() => downloadImage('PNG')} />
+        <Button text='JPEG' onClick={() => downloadImage('JPEG')} />
+        {/* <button onClick={() => downloadImage('PNG')}>PNG</button>
+        <button onClick={() => downloadImage('JPEG')}>JPEG</button> */}
+      </div>
     </>
   )
 }

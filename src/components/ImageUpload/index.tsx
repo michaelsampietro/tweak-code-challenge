@@ -22,8 +22,9 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ setImage }) => {
   }
 
   return (
-    <>
-      <Title title='Upload Image' /><div className='inputWrapper'>
+    <div className={styles.inputWrapper}>
+      <Title title='Upload Image' />
+      <div>
         <input
           type="file"
           name="imageInput"
@@ -33,7 +34,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ setImage }) => {
           accept="image/*" // Only image types accepted
         />
       </div>
-    </>
+    </div>
   )
 }
 
