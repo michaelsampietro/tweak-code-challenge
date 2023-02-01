@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import ImageUpload from './components/ImageUpload';
-import ImageEditor from './components/ImageEditor';
+import ImagePreview from './components/ImagePreview';
 import ImageDownload from './components/ImageDownload';
 import styles from './App.module.css';
+import ImageFilters from './components/ImageFilters';
 
 function App() {
-  // These states will be shared between the ImageUpload and ImageEditor components.
   const [baseImage, setBaseImage] = useState<HTMLImageElement>();
   const [canvas, setCanvas] = React.useState<fabric.StaticCanvas>();
 
@@ -13,12 +13,17 @@ function App() {
     <div className={styles.appWrapper}>
       <ImageUpload setImage={setBaseImage} />
 
+      {canvas && (
+        <ImageFilters canvas={canvas} />
+      )}
+
       {baseImage && (
         <>
-          <ImageEditor image={baseImage} setCanvas={setCanvas} canvas={canvas} />
+          <ImagePreview image={baseImage} setCanvas={setCanvas} canvas={canvas} />
           <ImageDownload canvas={canvas} fileName={baseImage.getAttribute('name')} />
         </>
       )}
+
     </div>
   );
 }
