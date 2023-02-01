@@ -28,6 +28,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - name: Install dependencies
+        run: npm run install
       - name: Build
         run: npm run deploy
       - name: Checkout
