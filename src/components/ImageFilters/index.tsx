@@ -5,7 +5,6 @@ import { resetObject } from '../../helpers/resetObject';
 import Filter from '../Filter';
 import { FiltersStateType } from '../../types/filterState.type';
 import styles from './style.module.css';
-import Title from '../Title';
 
 type ImageFiltersProps = {
   image: fabric.Image;
