@@ -6,7 +6,7 @@ const mockSetImage = jest.fn();
 const fakeFile = new File(['hello'], 'hello.png', { type: 'image/png' });
 
 describe('ImageUpload', () => {
-  it('should render', async () => {
+  it('Uploads file correctly', async () => {
     render(<ImageUpload setImage={mockSetImage} />);
     expect(screen.getByText('Upload Image')).toBeInTheDocument();
 
