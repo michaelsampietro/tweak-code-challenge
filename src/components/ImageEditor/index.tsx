@@ -48,8 +48,8 @@ const ImageEditor: React.FC<ImageEditorProps> = ({ image: rawImage, canvas, setC
 
         // scaling image to fit canvas
         // 0.93 is a magic number to make it fit better and prevent overflowing the canvas
-        imageObject.scaleX = canvas?.getWidth()! / imageWidth * 0.93;
-        imageObject.scaleY = canvas?.getHeight()! / imageHeight * 0.93;
+        imageObject.scaleX = canvas?.getWidth()! / imageWidth * 0.95;
+        imageObject.scaleY = canvas?.getHeight()! / imageHeight * 0.95;
 
         // resizing canvas to adjust width and height based on image's new dimensions
         canvas?.setWidth(imageObject.getScaledWidth());
@@ -64,17 +64,15 @@ const ImageEditor: React.FC<ImageEditorProps> = ({ image: rawImage, canvas, setC
   }, [rawImage, canvas, windowHeight, windowWidth]);
 
   return (
-    <>
-      <Title title='Edit Image' />
-
+    <div className='w-100'>
       {canvasImage && canvas && (
         <ImageFilters image={canvasImage} canvas={canvas} setFiltersState={setFiltersState} filtersState={filtersState} />
       )}
 
-      <div>
+      <div className='center-div'>
         <canvas ref={canvasRef} />
       </div>
-    </>
+    </div>
   );
 }
 

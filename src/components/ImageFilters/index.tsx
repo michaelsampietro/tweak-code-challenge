@@ -4,6 +4,8 @@ import { filterOptions } from './filterOptions';
 import { resetObject } from '../../helpers/resetObject';
 import Filter from '../Filter';
 import { FiltersStateType } from '../../types/filterState.type';
+import styles from './style.module.css';
+import Title from '../Title';
 
 type ImageFiltersProps = {
   image: fabric.Image;
@@ -12,7 +14,7 @@ type ImageFiltersProps = {
   filtersState: FiltersStateType,
 }
 
-const ImageFilters: React.FC<ImageFiltersProps> = ({ image, canvas, filtersState, setFiltersState }) => { 
+const ImageFilters: React.FC<ImageFiltersProps> = ({ image, canvas, filtersState, setFiltersState }) => {
   const addFilter = (filters: fabric.IBaseFilter[]) => {
     removeFilters();
     image.filters?.push(...filters);
@@ -51,17 +53,19 @@ const ImageFilters: React.FC<ImageFiltersProps> = ({ image, canvas, filtersState
 
   return (
     <form onChangeCapture={handleFormChange}>
-      {filterOptions.map((filterOption) => (
-        <Filter
-          key={filterOption.fieldName}
-          applyFilter={adjustFilterIntensity}
-          label={filterOption.displayName}
-          fieldName={filterOption.fieldName}
-          value={filtersState[filterOption.fieldName]}
-          max={filterOption.max}
-        />
-      )
-      )}
+      <div className={styles.filterWrapper}>
+        {filterOptions.map((filterOption) => (
+          <Filter
+            key={filterOption.fieldName}
+            applyFilter={adjustFilterIntensity}
+            label={filterOption.displayName}
+            fieldName={filterOption.fieldName}
+            value={filtersState[filterOption.fieldName]}
+            max={filterOption.max}
+          />
+        )
+        )}
+      </div>
     </form>
   )
 }

@@ -1,0 +1,13 @@
+.filterWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  .filterWrapper {
+    display: flex;
+    flex-direction: row;
+  }
+}

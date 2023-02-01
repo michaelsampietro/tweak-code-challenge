@@ -1,0 +1,13 @@
+@import '../../index.css';
+
+.fieldWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  justify-content: center;
+}
+
+.fieldWrapper input[type="range"]{
+  cursor: pointer;
+}

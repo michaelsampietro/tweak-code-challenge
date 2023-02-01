@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './style.module.css';
 
 type FilterProps = {
   label: string;
@@ -10,7 +11,7 @@ type FilterProps = {
 
 const Filter: React.FC<FilterProps> = ({ label, applyFilter, fieldName, value, max }) => {
   return (
-    <>
+    <div className={styles.fieldWrapper}>
       <label htmlFor={fieldName}>{label}</label>
       <input
         type="range"
@@ -21,7 +22,7 @@ const Filter: React.FC<FilterProps> = ({ label, applyFilter, fieldName, value, m
         value={value}
         onChange={(e) => applyFilter(e, fieldName)}
       />
-    </>
+    </div>
   )
 }
 
