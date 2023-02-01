@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { fabric } from 'fabric';
 import { filterOptions } from './filterOptions';
 import { resetObject } from '../../helpers/resetObject';
@@ -8,24 +8,33 @@ import styles from './style.module.css';
 import Title from '../Title';
 
 type ImageFiltersProps = {
-  image: fabric.Image;
   canvas: fabric.StaticCanvas;
-  setFiltersState: React.Dispatch<React.SetStateAction<FiltersStateType>>,
-  filtersState: FiltersStateType,
 }
 
-const ImageFilters: React.FC<ImageFiltersProps> = ({ image, canvas, filtersState, setFiltersState }) => {
+const ImageFilters: React.FC<ImageFiltersProps> = ({ canvas }) => {
+  const [image] = canvas.getObjects() as fabric.Image[];
+  const [filtersState, setFiltersState] = useState<FiltersStateType>({ sepia: 0, blur: 0, vintage: 0 });
+
+  useEffect(() => {
+    setFiltersState(resetObject(filtersState, 0));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [image]);
+
   const addFilter = (filters: fabric.IBaseFilter[]) => {
-    removeFilters();
-    image.filters?.push(...filters);
-    image.applyFilters();
-    canvas.add(image!);
+    if (image) {
+      removeFilters();
+      image.filters?.push(...filters);
+      image.applyFilters();
+      canvas.renderAll();
+    }
   }
 
   const removeFilters = () => {
-    image.filters?.splice(0, image.filters.length);
-    image.applyFilters();
-    canvas.add(image);
+    if (image) {
+      image.filters?.splice(0, image.filters.length);
+      image.applyFilters();
+      canvas.renderAll();
+    }
   }
 
   const handleFormChange = (e: any) => {
@@ -36,8 +45,12 @@ const ImageFilters: React.FC<ImageFiltersProps> = ({ image, canvas, filtersState
 
   const adjustFilterIntensity = (event: React.ChangeEvent<HTMLInputElement>, filterName: string) => {
     if (event?.target?.value) {
-      const intensity = event?.target?.value || 0;
-      removeFilters();
+      const intensity = Number(event?.target?.value || 0);
+
+      if (intensity === 0) {
+        removeFilters();
+        return;
+      }
 
       const filter = filterOptions.find(f => f.fieldName as string === filterName)?.filter;
 
@@ -52,7 +65,7 @@ const ImageFilters: React.FC<ImageFiltersProps> = ({ image, canvas, filtersState
   }
 
   return (
-    <form onChangeCapture={handleFormChange}>
+    <form onChangeCapture={handleFormChange} className='w-100'>
       <div className={styles.filterWrapper}>
         {filterOptions.map((filterOption) => (
           <Filter

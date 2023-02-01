@@ -11,17 +11,11 @@ const ImageDownload: React.FC<ImageDownloadProps> = ({ canvas, fileName }) => {
 
   const downloadImage = (format: 'PNG' | 'JPEG') => {
     if (canvas) {
-      const editedImage = canvas.getObjects()[0] as fabric.Image;
-      // Storing image current size
-      const currentSizes = {
-        scaleX: editedImage.scaleX,
-        scaleY: editedImage.scaleY,
-      };
+      const [editedImage] = canvas.getObjects() as fabric.Image[];
 
-      // Getting images original size
+      // Getting images' original size
       const { height, width } = editedImage.getOriginalSize();
 
-      // Scaling back to original size
       editedImage.scaleToWidth(width);
       editedImage.scaleToHeight(height);
 
@@ -33,14 +27,10 @@ const ImageDownload: React.FC<ImageDownloadProps> = ({ canvas, fileName }) => {
         width,
       });
 
-      // Revert image back to "editing" size
-      editedImage.scaleX = currentSizes.scaleX;
-      editedImage.scaleY = currentSizes.scaleY;
-
       const link = document.createElement('a');
       link.hidden = true;
       link.href = dataURL;
-      link.download = fileName || '';
+      link.download = fileName?.split('.')[0] || '';
       link.click();
     }
   };
