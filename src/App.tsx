@@ -1,25 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import ImageUpload from './components/ImageUpload';
+import ImageEditor from './components/ImageEditor';
+import ImageDownload from './components/ImageDownload';
 
 function App() {
+  // These states will be shared between the ImageUpload and ImageEditor components.
+  const [baseImage, setBaseImage] = useState<HTMLImageElement>();
+  const [canvas, setCanvas] = React.useState<fabric.StaticCanvas>();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ImageUpload setImage={setBaseImage} />
+
+      {baseImage && (
+        <>
+          <ImageEditor image={baseImage} setCanvas={setCanvas} canvas={canvas} />
+          <ImageDownload canvas={canvas} fileName={baseImage?.getAttribute('name')} />
+        </>
+      )}
+    </>
   );
 }
 
