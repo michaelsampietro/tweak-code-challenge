@@ -63,7 +63,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ image: rawImage, canvas, se
 
   return (
     <div className='w-100 center-div'>
-      <canvas ref={canvasRef} />
+      <canvas data-testid="canvas" ref={canvasRef} />
     </div>
   );
 }
