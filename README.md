@@ -23,8 +23,8 @@ Yes! To run tests, execute the following:
 
 It will launch the test runner, and also give you the coverage. Note: the pipeline runs this command before deploying to Github Pages.
 
-(Currently: 74%)
-![image](https://user-images.githubusercontent.com/18105975/216221148-bd2151e0-0226-431c-825c-c0d703fcfeb6.png)
+(Currently: 81%)
+![image](https://user-images.githubusercontent.com/18105975/216331337-48775a17-5499-4fce-985e-c1a8f5fa5d1f.png)
 
 ## Description of the challenge:
 
