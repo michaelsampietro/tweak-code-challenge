@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/tweak-code-challenge/static/css/main.0c4ea5c0.css",
+    "main.css": "/tweak-code-challenge/static/css/main.55060b45.css",
     "main.js": "/tweak-code-challenge/static/js/main.382b9362.js",
     "index.html": "/tweak-code-challenge/index.html",
-    "main.0c4ea5c0.css.map": "/tweak-code-challenge/static/css/main.0c4ea5c0.css.map",
+    "main.55060b45.css.map": "/tweak-code-challenge/static/css/main.55060b45.css.map",
     "main.382b9362.js.map": "/tweak-code-challenge/static/js/main.382b9362.js.map"
   },
   "entrypoints": [
-    "static/css/main.0c4ea5c0.css",
+    "static/css/main.55060b45.css",
     "static/js/main.382b9362.js"
   ]
 }
