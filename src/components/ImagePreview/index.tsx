@@ -23,7 +23,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({ image: rawImage, canvas, se
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // When rawImage or canvas changes, resize canvas and add image to it
+  // When rawImage or canvas changes, set canvas size and add image to it
   useEffect(() => {
     if (rawImage && canvas) {
       setCanvasSize(canvas, windowWidth);
