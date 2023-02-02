@@ -23,14 +23,20 @@ describe('ImageFilters', () => {
     })
   });
 
-  it('Applies filters slider change', () => {
+  it('Applies filters correctly on slider changes', () => {
     render(<ImageFilters canvas={mockStaticCanvas} />);
 
-    const slider = screen.getAllByRole("slider")[0];
+    const [slider] = screen.getAllByRole("slider");
     fireEvent.change(slider, { target: { value: 5 } });
 
     const [mockImage] = mockStaticCanvas.getObjects();
     expect(mockImage.filters?.length).toBe(5);
+    expect(mockImage.applyFilters).toHaveBeenCalled();
+    expect(mockStaticCanvas.renderAll).toHaveBeenCalled();
+    
+    // Removes filters when slider is set to 0
+    fireEvent.change(slider, { target: { value: 0 } });
+    expect(mockImage.filters?.length).toBe(0);
     expect(mockImage.applyFilters).toHaveBeenCalled();
     expect(mockStaticCanvas.renderAll).toHaveBeenCalled();
   });
