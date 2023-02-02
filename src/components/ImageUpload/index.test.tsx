@@ -6,9 +6,10 @@ const mockSetImage = jest.fn();
 const fakeFile = new File(['hello'], 'hello.png', { type: 'image/png' });
 
 describe('ImageUpload', () => {
+
   it('Uploads file correctly', async () => {
-    render(<ImageUpload setImage={mockSetImage} />);
-    expect(screen.getByText('Upload Image')).toBeInTheDocument();
+    render(<ImageUpload setImage={mockSetImage} hasImage={false} />);
+    expect(screen.queryByText('Change Image')).not.toBeInTheDocument();
 
     const uploader = screen.getByTestId('imageInput');
 
