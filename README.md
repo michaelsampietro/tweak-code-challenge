@@ -1,8 +1,12 @@
-# Getting Started with Create React App
+# Tweak Code Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Where is this application hosted?
 
-## Available Scripts
+You can access it [here](https://michaelsampietro.github.io/tweak-code-challenge/).
+
+This application is deployed on Github Pages using Github Actions.
+
+## How to run this project?
 
 In the project directory, you can run:
 
@@ -11,36 +15,35 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Is this project tested?
+
+Yes! To run tests, execute the following:
 
 ### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+It will launch the test runner, and also give you the coverage. Note: the pipeline runs this command before deploying to Github Pages.
 
-### `yarn build`
+(Currently: 74%)
+![image](https://user-images.githubusercontent.com/18105975/216221148-bd2151e0-0226-431c-825c-c0d703fcfeb6.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Description of the challenge:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Create an Instagram-like image filter app, the main purpose of this test is to check the candidate's ability to handle different technologies and see how structures the code. The app should have the following functionality:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+		Open an image from the file system. ✅
+		Select between 3 different filters: vintage, sepia and blur. ✅
+		Select filter strength (0% to 100%). ✅
+		Preview the filter applied to the picture. ✅
+		Download the image as PNG or JPEG. ✅
 
-### `yarn eject`
+Requirements
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+		FabricJS [http://fabricjs.com](http://fabricjs.com) ✅
+		ReactJS [https://reactjs.org](https://reactjs.org) ✅
+		Typescript ✅
+		Use github to host the code and application ✅
+		Good and clear commit messages ✅
+		Good usability and production ready design, UI Frameworks such as Bootstrap, Material UI and others are not allowed ✅
+		Responsive ✅
+		Tests ✅
+		Deploy the application to github pages and use github actions to setup automatic deployment ✅
