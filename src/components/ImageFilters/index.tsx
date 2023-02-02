@@ -8,38 +8,39 @@ import styles from './style.module.css';
 
 type ImageFiltersProps = {
   canvas: fabric.StaticCanvas;
+  imageName?: string | null;
 }
 
-const ImageFilters: React.FC<ImageFiltersProps> = ({ canvas }) => {
-  const [image] = canvas.getObjects() as fabric.Image[];
+const ImageFilters: React.FC<ImageFiltersProps> = ({ canvas, imageName }) => {
+  const [canvasImage] = canvas.getObjects() as fabric.Image[];
   const [filtersState, setFiltersState] = useState<FiltersStateType>({ sepia: 0, blur: 0, vintage: 0 });
 
   useEffect(() => {
-    setFiltersState(resetObject(filtersState, 0));
+    setFiltersState({...resetObject(filtersState, 0)});
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [image]);
+  }, [imageName]);
 
   const addFilter = (filters: fabric.IBaseFilter[]) => {
-    if (image) {
+    if (canvasImage) {
       removeFilters();
-      image.filters?.push(...filters);
-      image.applyFilters();
+      canvasImage.filters?.push(...filters);
+      canvasImage.applyFilters();
       canvas.renderAll();
     }
   }
 
   const removeFilters = () => {
-    if (image) {
-      image.filters?.splice(0, image.filters.length);
-      image.applyFilters();
+    if (canvasImage) {
+      canvasImage.filters?.splice(0, canvasImage.filters.length);
+      canvasImage.applyFilters();
       canvas.renderAll();
     }
   }
 
-  const handleFormChange = (e: any) => {
+  const handleFormChange = (event: any) => {
     // Reseting other filters to 0
     const newState = resetObject(filtersState, 0);
-    setFiltersState({ ...newState, [e.target.name]: Number(e.target.value ?? 0) });
+    setFiltersState({ ...newState, [event.target.name]: Number(event.target.value ?? 0) });
   }
 
   const adjustFilterIntensity = (event: React.ChangeEvent<HTMLInputElement>, filterName: string) => {

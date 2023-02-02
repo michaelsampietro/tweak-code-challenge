@@ -3,10 +3,11 @@ import Title from '../Title';
 import styles from './style.module.css';
 
 type ImageUploadProps = {
+  hasImage: boolean;
   setImage: (image: HTMLImageElement) => void;
 }
 
-const ImageUpload: React.FC<ImageUploadProps> = ({ setImage }) => {
+const ImageUpload: React.FC<ImageUploadProps> = ({ setImage, hasImage }) => {
   const onFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -23,7 +24,9 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ setImage }) => {
 
   return (
     <div className={styles.inputWrapper}>
-      <Title title='Upload Image' />
+      {hasImage && (
+        <Title title='Change Image' />
+      )}
       <div>
         <input
           type="file"

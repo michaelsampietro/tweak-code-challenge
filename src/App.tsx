@@ -11,19 +11,26 @@ function App() {
 
   return (
     <div className={styles.appWrapper}>
-      <ImageUpload setImage={setBaseImage} />
+      {!baseImage && (
+        <div>
+          <h1>Upload an image to get started</h1>
+        </div>
+      )}
 
-      {canvas && (
-        <ImageFilters canvas={canvas} />
+      <ImageUpload setImage={setBaseImage} hasImage={baseImage !== undefined} />
+
+
+      {baseImage && canvas && (
+        <ImageFilters canvas={canvas} imageName={baseImage.getAttribute('name')} />
       )}
 
       {baseImage && (
-        <>
-          <ImagePreview image={baseImage} setCanvas={setCanvas} canvas={canvas} />
-          <ImageDownload canvas={canvas} fileName={baseImage.getAttribute('name')} />
-        </>
+        <ImagePreview image={baseImage} setCanvas={setCanvas} canvas={canvas} />
       )}
 
+      {baseImage && canvas && (
+        <ImageDownload canvas={canvas} fileName={baseImage.getAttribute('name')} />
+      )}
     </div>
   );
 }
